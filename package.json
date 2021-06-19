@@ -1,0 +1,30 @@
+{
+  "name": "project3-blanket",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cresia/project3-blanket.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cresia/project3-blanket/issues"
+  },
+  "homepage": "https://github.com/cresia/project3-blanket#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "http-proxy-middleware": "^2.0.0",
+    "mongodb": "^3.6.9",
+    "mongoose": "^5.12.14",
+    "multer": "^1.4.2",
+    "uuid": "^8.3.2"
+  }
+}
