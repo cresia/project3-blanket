@@ -1,24 +1,63 @@
-import React from "react";
-import logo from "./logo.svg";
-import "./App.css";
+import './App.css';
+import React, { Component } from "react";
+import { products } from "./products";
+import Navigation from "./navbar";
+import "bootstrap/dist/css/bootstrap.min.css";
 
-function App() {
-  const [data, setData] = React.useState(null);
+class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      sortType: "normal",
+      listNum: "",
+      shoppingItem: products
+    };
+  }
 
-  React.useEffect(() => {
-    fetch("/api")
-      .then((res) => res.json())
-      .then((data) => setData(data.message));
-  }, []);
+  handleIncrease = (item) => {
+    const updatedItem = item.value++;
+    this.setState({ updatedItem });
+  }
 
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>{!data ? "Loading..." : data}</p>
-      </header>
-    </div>
-  );
+  handleDecrease = (item) => {
+    if (item.value > 0) {
+      const updatedItem = item.value--;
+      this.setState({ updatedItem });
+    }
+  }
+
+  onSort = (listNum, sortType) => {
+    listNum.sort((a, b) => {
+      if (sortType === "normal") {
+        return a.id < b.id ? 1 : -1;
+      } else if (sortType === "lowest") {
+        return a.price < b.price ? -1 : 1;
+      } else {
+        return a.price < b.price ? 1 : -1;
+      }
+    });
+    this.setState({ sortType })
+  };
+
+  render() {
+    return (
+      {},
+      (
+        <div className="App">
+          <Navigation
+            totalValue={this.state.shoppingItem.map(item => item.value).reduce((acc, curr, index) => acc + curr, 0)}
+            items={this.state.shoppingItem}
+            handleIncrease={this.handleIncrease}
+            handleDecrease={this.handleDecrease}
+            sortType={this.state.sortType}
+            listNum={this.state.listNum}
+            onSort={this.onSort}
+          />
+        </div>
+      )
+    );
+  }
 }
 
 export default App;
+
