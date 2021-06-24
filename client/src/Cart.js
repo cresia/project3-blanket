@@ -13,7 +13,7 @@ export default function Cart(props) {
             <div className="cartDisplay">
               <img src={item.image} alt="Shopping" height={150} width={150} />
               <div className="quantityDisplay">
-                {/* <span>{item.value}</span> */}
+                <h2 className="cartTitle">{item.desc}</h2>
                 <p className="quantity">Quantity: {item.value}</p>
               </div>
             </div>

@@ -33,11 +33,12 @@ export default function Shopcontent(props) {
             <h2 className="d-flex">{shopitem.desc}
               <h2 className="priceTitle text-danger">  ${shopitem.price}</h2>
             </h2>
-            <div className="itemcontent">
-              <img src={shopitem.image} alt="Shopping" height={150} width={150} onClick={() => handleShow(shopitem)} />
 
-              <button className="updateButton" onClick={() => props.handleIncrease(shopitem)}>
-                <FontAwesomeIcon icon={faPlusCircle} height={50} width={50} />
+            <div className="itemcontent">
+              <img className="imageProduct" src={shopitem.image} alt="Shopping" height={150} width={150} onClick={() => handleShow(shopitem)} />
+
+              <button className="updateButton" onClick={() => props.handleDecrease(shopitem)}>
+                <FontAwesomeIcon icon={faMinusCircle} />
               </button>
 
               <div className="quantityDisplay">
@@ -45,12 +46,9 @@ export default function Shopcontent(props) {
                 <span className="itemQuantity" >{shopitem.value}</span>
               </div>
 
-              <button className="updateButton" onClick={() => props.handleDecrease(shopitem)}>
-                <FontAwesomeIcon icon={faMinusCircle} />
+              <button className="updateButton" onClick={() => props.handleIncrease(shopitem)}>
+                <FontAwesomeIcon icon={faPlusCircle} height={50} width={50} />
               </button>
-
-
-
             </div>
           </ListGroupItem>
         )
